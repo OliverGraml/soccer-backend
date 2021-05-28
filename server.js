@@ -10,7 +10,7 @@ import PlayerRoutes from './routes/player.routes.js';
 dotenv.config();
 
 const connectionString =
-  process.env.DB_CONNECTION || 'mongodb://localhost:27017/soccer_transfer_app';
+  process.env.DB_CONNECTION || 'mongodb://localhost:27017/soccer_backend';
 
 mongoose.connect(connectionString, {
   useNewUrlParser: true,
@@ -32,4 +32,4 @@ server.get('/', (req, res) =>
   })
 );
 
-server.listen(4000);
+server.listen(5000);
