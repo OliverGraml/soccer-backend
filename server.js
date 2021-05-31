@@ -1,6 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
+import cors from 'cors';
 
 import ClubRoutes from './routes/club.routes.js';
 import PlayerRoutes from './routes/player.routes.js';
@@ -10,7 +11,7 @@ import PlayerRoutes from './routes/player.routes.js';
 dotenv.config();
 
 const connectionString =
-  process.env.DB_CONNECTION || 'mongodb://localhost:27017/soccer_backend';
+  process.env.DB_CONNECTION || 'mongodb://localhost:27017/soccer-backend';
 
 mongoose.connect(connectionString, {
   useNewUrlParser: true,
@@ -21,6 +22,7 @@ mongoose.set('returnOriginal', false);
 
 const server = express();
 
+server.use(cors());
 server.use(express.json());
 
 server.use(ClubRoutes);

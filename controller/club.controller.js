@@ -9,7 +9,7 @@ function postClub(req, res) {
   });
   club
     .save()
-    .then((clubSaved) => res.json(`${clubSaved.clubname} is saved.`))
+    .then((clubSaved) => res.json(clubSaved))
     .catch((error) => res.json(error));
 }
 
@@ -20,18 +20,18 @@ function getClub(req, res) {
 }
 
 function getClubId(req, res) {
-  const { clubId } = req.params;
+  const {clubId} = req.params;
   Club.findById(clubId)
     .then((club) => res.json(club))
-    .catch((error) => res.json({ message: 'could not find the Id.' + clubId }));
+    .catch((error) => res.json({message: 'could not find the Id.' + clubId}));
 }
 
 function updateClub(req, res) {
-  const { clubId } = req.params;
+  const {clubId} = req.params;
   const updateClub = req.body;
-  Club.findByIdAndUpdate({ _id: clubId }, updateClub, (error, doc) => {
+  Club.findByIdAndUpdate({_id: clubId}, updateClub, (error, doc) => {
     if (error) {
-      res.json({ message: 'could not update database' });
+      res.json({message: 'could not update database'});
       return;
     }
     res.json(doc);
@@ -39,8 +39,8 @@ function updateClub(req, res) {
 }
 
 function deleteClub(req, res) {
-  const { clubId } = req.params;
-  Club.findByIdAndDelete({ _id: clubId }, (error, doc) =>
+  const {clubId} = req.params;
+  Club.findByIdAndDelete({_id: clubId}, (error, doc) =>
     res.json({
       success: true,
       message: `the club ${doc.clubname} has been deleted!`,
@@ -48,4 +48,4 @@ function deleteClub(req, res) {
   );
 }
 
-export { postClub, getClub, getClubId, updateClub, deleteClub };
+export {postClub, getClub, getClubId, updateClub, deleteClub};

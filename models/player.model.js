@@ -8,7 +8,7 @@ const playerSchema = new mongoose.Schema({
   club: String,
   free_transfer: Boolean,
   skills: Array,
-  mail: String,
+  email: String,
 });
 
 const Player = mongoose.model('SoccerPlayer', playerSchema);
